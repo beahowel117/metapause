@@ -1,26 +1,26 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+
+
 
 const HomeScreen: React.FC = () => {
     const [isHovered, setIsHovered] = useState(false);
-
+    StatusBar.setHidden(true);
     return (
         <View style={styles.container}>
             {/*Header with buttons */}
             <View style={styles.header}>
                 <TouchableOpacity
-                style={[ isHovered && styles.buttonTextHover]}
-                onPressIn={() => setIsHovered(true)}
-                onPressOut={() => setIsHovered(false)}
+                    style={styles.loginButton}
                 >
-                <Text style={styles.loginText}>Log In</Text>
+                    <Text style={styles.loginText}>Log In</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
-                style={[styles.buttonText, isHovered && styles.buttonTextHover]}
-                onPressIn={() => setIsHovered(true)}
-                onPressOut={() => setIsHovered(false)}
+                    style={[styles.signUpButton, isHovered && styles.buttonTextHover]}
+                    onPressIn={() => setIsHovered(true)}
+                    onPressOut={() => setIsHovered(false)}
                 >
-                <Text style={styles.signUpText}>Sign Up</Text>
+                    <Text style={styles.signUpText}>Sign Up</Text>
                 </TouchableOpacity>
 
                 <View style={styles.menuIcon}>
@@ -47,41 +47,45 @@ const styles = StyleSheet.create({
         paddingTop: 80,
     },
     header: {
-        position: 'absolute',
-        top: 40,
         flexDirection: 'row',
-        justifyContent: 'flex-end',
-        width: '90%',
-        paddingHorizontal: 20,
+        alignItems: 'center',
+        position: 'absolute',
+        // justifyContent: 'space-between',
+        // width: '90%',
+        top: 20,
+        right: 20,
+    },
+    loginButton: {
+        paddingHorizontal: 10,
     },
     loginText: {
         color: '#333',
         fontSize: 16,
     },
-    buttonText:{
+    signUpButton: {
         backgroundColor: '#6c63ff',
         paddingVertical: 8,
         paddingHorizontal: 15,
-        borderRadius: 20, 
+        borderRadius: 20,
+        marginLeft: 10, // space between Log In and Sign Up
     },
     buttonTextHover: {
         backgroundColor: '#7a6cf0'
     },
-
     signUpText: {
         fontSize: 16,
         color: '#fff',
         fontWeight: '600',
-      },
+    },
     content: {
         alignItems: 'center',
-        marginBottom: 50,
-        paddingHorizontal: 20
-      },
+        marginTop: 150, // Adjust spacing to push the content down
+        paddingHorizontal: 20,
+    },
     welcomeText: {
         fontSize: 20,
         color: '#333',
-        marginBottom: 10,
+        marginBottom: 5,
     },
     mainTitle: {
         fontSize: 32,
@@ -99,19 +103,13 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'space-around',
         height: 20,
+        marginLeft: 10, // space between Sign Up button and menu icon
     },
     menuLine: {
         width: 18,
         height: 2,
         backgroundColor: '#333'
     },
- 
-    brandName: {
-        fontSize: 36,
-        color: '#1D3557',
-        fontWeight: 'bold',
-    },
-   
 });
 
 export default HomeScreen; 
