@@ -40,18 +40,15 @@ const HomeScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'flex-start',
+        flex: 1, // Occupy full screen
         backgroundColor: '#F3F4F6',
-        paddingTop: 80,
+        alignItems: 'center',
+        paddingTop: 50,
     },
     header: {
         flexDirection: 'row',
         alignItems: 'center',
         position: 'absolute',
-        // justifyContent: 'space-between',
-        // width: '90%',
         top: 20,
         right: 20,
     },
