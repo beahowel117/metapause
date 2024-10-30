@@ -15,7 +15,12 @@ if linkage != nil
 end
 
 target 'Metapause' do
-  config = use_native_modules!
+   config = use_native_modules!
+  use_react_native!(:path => config[:reactNativePath]) do |fb|
+    fb.use_frameworks!
+    fb.hermes_enabled = true # Enable Hermes
+  end
+  
 
   use_react_native!(
     :path => config[:reactNativePath],
