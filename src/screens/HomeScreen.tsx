@@ -5,9 +5,9 @@ import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-nativ
 
 const HomeScreen: React.FC = () => {
     const [isHovered, setIsHovered] = useState(false);
-    StatusBar.setHidden(true);
+    // StatusBar.setHidden(true);
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {width: '100%', height: '100%'}]}>
             {/*Header with buttons */}
             <View style={styles.header}>
                 <TouchableOpacity
@@ -40,8 +40,7 @@ const HomeScreen: React.FC = () => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1, // Occupy full screen
-        backgroundColor: '#F3F4F6',
+        backgroundColor: 'grey',
         alignItems: 'center',
         paddingTop: 50,
     },
