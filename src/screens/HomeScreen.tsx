@@ -1,46 +1,51 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
-
+import LinearGradient from 'react-native-linear-gradient';
 
 
 const HomeScreen: React.FC = () => {
     const [isHovered, setIsHovered] = useState(false);
-    // StatusBar.setHidden(true);
+    StatusBar.setHidden(true);
     return (
-        <View style={[styles.container, {width: '100%', height: '100%'}]}>
-            {/*Header with buttons */}
-            <View style={styles.header}>
-                <TouchableOpacity
-                    style={styles.loginButton}
-                >
-                    <Text style={styles.loginText}>Log In</Text>
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    style={[styles.signUpButton, isHovered && styles.buttonTextHover]}
-                    onPressIn={() => setIsHovered(true)}
-                    onPressOut={() => setIsHovered(false)}
-                >
-                    <Text style={styles.signUpText}>Sign Up</Text>
-                </TouchableOpacity>
+        <LinearGradient
+            colors={['#F1E9FF', '#F5FBFF', '#FBE9FF']}
+            start={{ x: 0, y: 0 }}
+            end={{ x: 1, y: 0 }}
+            style={[styles.container, {width: '100%', height: '100%'}]}
+        >
+                {/*Header with buttons */}
+                <View style={styles.header}>
+                    <TouchableOpacity
+                        style={styles.loginButton}
+                    >
+                        <Text style={styles.loginText}>Log In</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity 
+                        style={[styles.signUpButton, isHovered && styles.buttonTextHover]}
+                        onPressIn={() => setIsHovered(true)}
+                        onPressOut={() => setIsHovered(false)}
+                    >
+                        <Text style={styles.signUpText}>Sign Up</Text>
+                    </TouchableOpacity>
 
-                <View style={styles.menuIcon}>
-                    <View style={styles.menuLine} />
-                    <View style={styles.menuLine} />
+                    <View style={styles.menuIcon}>
+                        <View style={styles.menuLine} />
+                        <View style={styles.menuLine} />
+                    </View>
                 </View>
-            </View>
-            {/*Title and SubTitle */}
-            <View style={styles.content}>
-                <Text style={styles.welcomeText}>Welcome to</Text>
-                <Text style={styles.mainTitle}>The MetaPause</Text>
-                <Text style={styles.subtitle}>Your personalized marketplace for women's health and longevity.</Text>
-            </View>
-        </View>
+                {/*Title and SubTitle */}
+                <View style={styles.content}>
+                    <Text style={styles.welcomeText}>Welcome to</Text>
+                    <Text style={styles.mainTitle}>The MetaPause</Text>
+                    <Text style={styles.subtitle}>Your personalized marketplace for women's health and longevity.</Text>
+                </View>
+   
+        </LinearGradient>
     )
 };
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: 'grey',
         alignItems: 'center',
         paddingTop: 50,
     },
@@ -59,7 +64,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
     signUpButton: {
-        backgroundColor: '#6c63ff',
+        backgroundColor: '#5349CB',
         paddingVertical: 8,
         paddingHorizontal: 15,
         borderRadius: 20,
@@ -72,6 +77,7 @@ const styles = StyleSheet.create({
         fontSize: 16,
         color: '#fff',
         fontWeight: '600',
+        
     },
     content: {
         alignItems: 'center',
@@ -84,9 +90,10 @@ const styles = StyleSheet.create({
         marginBottom: 5,
     },
     mainTitle: {
-        fontSize: 32,
+        fontSize: 44,
+        fontFamily: 'ElMessiri-Regular',
         fontWeight: 'bold',
-        color: '#1A237E',
+        color: '#002C6B',
         marginBottom: 8,
     },
     subtitle: {
