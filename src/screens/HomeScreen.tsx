@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, StatusBar, ScrollView } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
+import Swiper from 'react-native-swiper';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../../types';
 
+type HomePageProps = {
+    navigation: StackNavigationProp<RootStackParamList, 'Home'>;
+};
 
-const HomeScreen: React.FC = () => {
+const HomeScreen: React.FC<HomePageProps> = ({navigation}) => {
     const [isHovered, setIsHovered] = useState(false);
     StatusBar.setHidden(true);
     return (
@@ -34,12 +40,31 @@ const HomeScreen: React.FC = () => {
                     </View>
                 </View>
                 {/*Title and SubTitle */}
-                <View style={styles.content}>
-                    <Text style={styles.welcomeText}>Welcome to</Text>
-                    <Text style={styles.mainTitle}>The MetaPause</Text>
-                    <Text style={styles.subtitle}>Your personalized marketplace for women's health and longevity.</Text>
-                </View>
-   
+                <Swiper>
+                    <View style={styles.content}>
+                        <Text style={styles.welcomeText}>Welcome to</Text>
+                        <Text style={styles.mainTitle}>The MetaPause</Text>
+                        <Text style={styles.subtitle}>Your personalized marketplace for women's health and longevity.</Text>
+                    </View>
+                    <View>
+                        <Text style={styles.text}>What if you could{' '}
+                            <Text style={styles.boldPurple}>choose</Text>{' '}
+                            <Text style={{color: '#796EFF' }}>how you age</Text>
+                        </Text>
+                    </View>
+                    <View>
+                        <Text style={styles.text}>What if you could{' '}
+                            <Text style={styles.boldPurple}>thrive</Text>{' '}
+                            <Text style={{color: '#796EFF' }}>for the rest of your life</Text>
+                         </Text>
+                    </View>
+                    <View>
+                        <Text style={styles.text}>What if you could{' '} 
+                            <Text style={styles.boldPurple}>look forward</Text>{' '}
+                            <Text style={{color: '#796EFF' }}>to birthdays again</Text>
+                        </Text>
+                    </View>
+                </Swiper>
         </LinearGradient>
     )
 };
@@ -113,6 +138,17 @@ const styles = StyleSheet.create({
         height: 2,
         backgroundColor: '#333'
     },
+  boldPurple: {
+    fontWeight: 'bold',
+    color: '#796EFF'
+  },
+  text: {
+    width: 300,
+    textAlign: 'center',
+    fontSize: 20,
+    marginTop: 175,
+    marginLeft: 25
+  }
 });
 
 export default HomeScreen; 
